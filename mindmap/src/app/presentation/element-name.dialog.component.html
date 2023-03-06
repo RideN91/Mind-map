@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+
+<div mat-dialog-content>
+  <mat-form-field class="field">
+    <mat-label>Map Core</mat-label>
+
+    <input
+      #nameControl="ngModel"
+      matInput
+      required
+      name="name"
+      [(ngModel)]="name"
+    >
+
+    <mat-error *ngIf="nameControl.hasError('required')">
+      <span>Map Core name is <strong>required</strong></span>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div
+  mat-dialog-actions
+  [align]="'end'"
+>
+  <button
+    mat-flat-button
+    [mat-dialog-close]="null"
+  >Cancel</button>
+
+  <button
+    mat-flat-button
+    [color]="'primary'"
+    [disabled]="nameControl.invalid"
+    [mat-dialog-close]="name"
+  >Add</button>
+</div>

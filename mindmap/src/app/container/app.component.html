@@ -1,0 +1,75 @@
+<div
+  #container
+  class="container"
+  (click)="contextMenuHide()"
+
+>
+  <div
+    #tools
+    class="tools"
+  >
+    <button
+      mat-icon-button
+      matTooltip="Start"
+      (click)="addStart()"
+    >
+      <mat-icon
+        class="material-icons-outlined"
+        fontIcon="home"
+      ></mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      matTooltip="Rectangle"
+      (click)="addRectangle()"
+    >
+      <mat-icon
+        class="material-icons-outlined"
+        fontIcon="font_download"
+      ></mat-icon>
+    </button>
+  </div>
+
+  <div
+    #diagramWrap
+    class="diagram-wrap"
+  >
+    <div
+      #diagram
+      class="diagram"
+      (contextmenu)="contextMenuShow($event)"
+    ></div>
+  </div>
+
+  <div
+    #contextMenu
+    class="context-menu"
+    [class.visible]="isContextMenuVisible"
+  >
+    <!-- <ng-content select=".context-menu"></ng-content> -->
+    <div
+      class="flex flex-content-space-between flex-items-center"
+      (click)="addStart()"
+    >
+      <mat-icon
+        class="material-icons-outlined"
+        fontIcon="play_circle"
+      ></mat-icon>
+
+      <span class="text">Add root node</span>
+    </div>
+
+    <div
+      class="flex flex-content-space-between flex-items-center"
+      (click)="addRectangle()"
+    >
+      <mat-icon
+        class="material-icons-outlined"
+        fontIcon="font_download"
+      ></mat-icon>
+
+      <span class="text">Add text node</span>
+    </div>
+  </div>
+</div>
